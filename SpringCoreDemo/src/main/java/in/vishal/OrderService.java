@@ -1,0 +1,28 @@
+package in.vishal;
+
+import in.vishal.payment.PaymentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+//@Component
+public class OrderService {
+
+    private  PaymentService paymentService;
+//    public OrderService(PaymentService paymentService){
+//        this.paymentService = paymentService;
+//    }
+
+    @Autowired
+    public OrderService(PaymentService paymentService){
+        this.paymentService = paymentService;
+    }
+//    @Autowired
+//    public void setPaymentService(PaymentService paymentService) {
+//        this.paymentService = paymentService;
+//    }
+
+    public void placeOrder(){
+        paymentService.pay();
+        System.out.println("Order Placed");
+    }
+}
